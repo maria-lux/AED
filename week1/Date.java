@@ -115,10 +115,8 @@ public class Date {
     }
 
     public static void main(String[] args) {
-        Date date1 = new Date(1, 1, 2025);
-        Date date2 = new Date(1, 1, 2024);
-        System.out.println(date1.daysBetween(date2));
-        System.out.println(date2.isLeapYear(2024));
+        Date date1 = new Date(1, 1, 0);
+        Date date2 = new Date(2, 2, 1);
     }
 
 }
