@@ -6,6 +6,9 @@ public class QuickUnionUF {
     private int[] id;
 
     public QuickUnionUF(int N) {
+        if (N <= 0) {
+            throw new IllegalArgumentException("Valor de N inválido");
+        }
         id = new int[N];
         for (int i = 0; i < N; i++) {
             id[i] = i;
@@ -26,7 +29,9 @@ public class QuickUnionUF {
     }
 
     public void union(int p, int q) {
-        id[p] = root(q);
+        int i = root(p);
+        int j = root(q);
+        id[i] = j;
     }
 
     @Override
