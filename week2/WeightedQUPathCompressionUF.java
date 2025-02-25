@@ -56,17 +56,6 @@ public class WeightedQUPathCompressionUF {
 
     public static void main(String[] args) {
         WeightedQUPathCompressionUF wqu = new WeightedQUPathCompressionUF(8);
-        System.out.println(wqu);
-        wqu.union(0, 1);
-        System.out.println(wqu);
-        wqu.union(0, 1);
-        System.out.println(wqu);
-        wqu.union(7, 0);
-        System.out.println(wqu);
-        wqu.union(6, 1);
-        System.out.println(wqu);
-        System.out.println(wqu.connected(6, 0));
-        wqu.union(3,6);
-        System.out.println(wqu);
+
     }
 }
