@@ -1,13 +1,61 @@
 import java.util.Iterator;
 
 public class Queue<T> implements Iterable<T> {
+    private Node first;
+    private Node last;
+    private int size;
 
-    //public Queue()                           constructor
-    //public void enqueue(T item)              add item to the queue
-    //public T dequeue()                       remove and return the least recently added item
-    //public boolean isEmpty()                 is the queue empty?
-    //public int size()                        number of items in the queue
-    //public void shift()		         move the last element to the start of the queue
+    public Queue() {
+        first = null;
+        last = null;
+    }
+
+    public void enqueue(T item) {
+        Node node = new Node();
+        node.item = item;
+
+        if (first == null) {
+            first = node;
+        } else {
+            last.next = node;
+        }
+
+        last = node;
+
+        size++;
+    }
+
+    public T dequeue() {
+        if (first == null) {
+            throw new IllegalStateException("Underflow");
+        }
+
+        T item = first.item;
+
+        if (first == last) {
+            first = null;
+            last = null;
+        } else {
+            first = first.next;
+        }
+
+        size--;
+
+        return item;
+    }
+
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void shift() {
+
+    }
+
     private class Node {
         public T item;
         public Node next;
@@ -15,6 +63,18 @@ public class Queue<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new QueueIterator();
+    }
+
+    private class QueueIterator implements Iterator<T> {
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
     }
 }
