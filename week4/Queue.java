@@ -53,7 +53,26 @@ public class Queue<T> implements Iterable<T> {
     }
 
     public void shift() {
+        Node n = first;
+        last.next = first;
+        first = last;
 
+        for (int i = 0; i < size - 1; i++) {
+            if (n.next == last) {
+                last = n;
+                last.next = null;
+            } else {
+                n = n.next;
+            }
+        }
+    }
+
+    public Node getFirst() {
+        return first;
+    }
+
+    public Node getLast() {
+        return last;
     }
 
     private class Node {
@@ -67,14 +86,19 @@ public class Queue<T> implements Iterable<T> {
     }
 
     private class QueueIterator implements Iterator<T> {
+        Node current = first;
+
         @Override
         public boolean hasNext() {
-            return false;
+            return current != null;
         }
 
         @Override
         public T next() {
-            return null;
+            T item = current.item;
+            current = current.next;
+            return item;
         }
     }
+
 }
